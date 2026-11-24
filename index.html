@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trivia Quest</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="game-container">
+
+        <header class="header">
+            <div class="logo">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Trivia Quest</span>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- HOME SCREEN -->
+            <section id="homeScreen" class="screen active">
+
+                <div class="hero">
+                    <i class="fa-solid fa-trophy hero-icon"></i>
+                    <h1>TRIVIA QUEST</h1>
+                    <p>Choose your challenge and become a trivia champion!</p>
+                </div>
+
+                <div class="panel">
+                    <h2>Choose Game Mode</h2>
+
+                    <div class="mode-options">
+                        <button id="soloBtn" class="mode-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Solo Challenge</span>
+                            <small>Test your knowledge</small>
+                        </button>
+
+                        <button id="duoBtn" class="mode-btn">
+                            <i class="fa-solid fa-users"></i>
+                            <span>Two-Player Duel</span>
+                            <small>Compete on one device</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h2>Explore the Categories</h2>
+
+                    <div class="categories-preview">
+                        <span><i class="fa-solid fa-mask"></i> Marvel</span>
+                        <span><i class="fa-solid fa-microphone"></i> Finish the Lyrics</span>
+                        <span><i class="fa-solid fa-music"></i> Who Sings This Song?</span>
+                        <span><i class="fa-solid fa-font"></i> Scrambled Words</span>
+                        <span><i class="fa-solid fa-calculator"></i> Mathematics</span>
+                        <span><i class="fa-solid fa-flask"></i> Chemical Symbols</span>
+                        <span><i class="fa-solid fa-tags"></i> Brand Names</span>
+                        <span><i class="fa-solid fa-earth-africa"></i>General Knowledge</span>
+                        <span><i class="fa-solid fa-heart-pulse"></i>Human Body & Health</span>
+
+
+                    </div>
+                </div>
+
+                <p id="highScoreText" class="high-score"></p>
+            </section>
+
+            <!-- PLAYER SETUP -->
+            <section id="setupScreen" class="screen">
+
+                <div class="panel setup-panel">
+                    <div class="section-icon">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+
+                    <h2>Player Setup</h2>
+                    <p>Enter your name to begin.</p>
+
+                    <div class="input-group">
+                        <label for="player1Name">Player 1</label>
+                        <input
+                            id="player1Name"
+                            type="text"
+                            maxlength="20"
+                            placeholder="Enter Player 1 name"
+                        >
+                    </div>
+
+                    <div id="player2Group" class="input-group hidden">
+                        <label for="player2Name">Player 2</label>
+                        <input
+                            id="player2Name"
+                            type="text"
+                            maxlength="20"
+                            placeholder="Enter Player 2 name"
+                        >
+                    </div>
+
+                    <button id="continueSetupBtn" class="primary-btn">
+                        Choose Categories
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <button id="backBtn" class="secondary-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Back
+                    </button>
+                </div>
+            </section>
+
+            <!-- CATEGORY SELECTION -->
+            <section id="categoryScreen" class="screen">
+
+                <div class="panel">
+                    <div class="section-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                    <h2>Choose Your Trivia</h2>
+
+                    <p>
+                        Select one or more categories,
+                        or choose Mixed Trivia to play them all.
+                    </p>
+
+                    <div class="category-selection">
+
+                        <button class="category-card" data-category="marvel" aria-pressed="false">
+                            <i class="fa-solid fa-mask"></i>
+                            <span>Marvel</span>
+                        </button>
+
+                        <button class="category-card" data-category="lyrics" aria-pressed="false">
+                            <i class="fa-solid fa-microphone"></i>
+                            <span>Finish the Lyrics</span>
+                        </button>
+
+                        <button class="category-card" data-category="music" aria-pressed="false">
+                            <i class="fa-solid fa-music"></i>
+                            <span>Who Sings This Song?</span>
+                        </button>
+
+                        <button class="category-card" data-category="scrambled" aria-pressed="false">
+                            <i class="fa-solid fa-font"></i>
+                            <span>Scrambled Words</span>
+                        </button>
+
+                        <button class="category-card" data-category="maths" aria-pressed="false">
+                            <i class="fa-solid fa-calculator"></i>
+                            <span>Mathematics</span>
+                        </button>
+
+                        <button class="category-card" data-category="chemistry" aria-pressed="false">
+                            <i class="fa-solid fa-flask"></i>
+                            <span>Chemical Symbols</span>
+                        </button>
+
+                        <button class="category-card" data-category="brands" aria-pressed="false">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>Brand Names</span>
+                        </button>
+
+                        <button class="category-card mixed-card" data-category="mixed" aria-pressed="false">
+                            <i class="fa-solid fa-shuffle"></i>
+                            <span>Mixed Trivia</span>
+                        </button>
+
+                        <button class="category-card" data-category="general" aria-pressed="false">
+                            <i class="fa-solid fa-earth-africa"></i>
+                            <span>General Knowledge</span>
+                        </button>
+
+                        <button class="category-card" data-category="humanbody" aria-pressed="false">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span>Human Body & Health</span>
+                        </button>
+
+
+                    </div>
+
+                    <p id="selectionSummary" class="selection-summary">
+                        No categories selected
+                    </p>
+
+                    <p id="selectionError" class="selection-error" role="alert"></p>
+
+                    <button id="startBtn" class="primary-btn">
+                        Start Challenge
+                        <i class="fa-solid fa-rocket"></i>
+                    </button>
+
+                    <button id="categoryBackBtn" class="secondary-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Back to Player Setup
+                    </button>
+                </div>
+            </section>
+
+            <!-- PLAYER HANDOFF -->
+            <section id="readyScreen" class="screen">
+                <div class="panel ready-panel">
+
+                    <div class="section-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+
+                    <h2>Pass the Phone</h2>
+                    <p id="readyMessage"></p>
+                    <h3 id="readyPlayer"></h3>
+
+                    <button id="readyBtn" class="primary-btn">
+                        I'm Ready
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- GAME SCREEN -->
+            <section id="gameScreen" class="screen">
+
+                <div id="scoreboard" class="scoreboard">
+
+                    <div id="player1Card" class="player-card">
+                        <span id="scoreName1">Player 1</span>
+                        <strong id="score1">0</strong>
+                        <small id="streak1"></small>
+                    </div>
+
+                    <div id="player2Card" class="player-card hidden">
+                        <span id="scoreName2">Player 2</span>
+                        <strong id="score2">0</strong>
+                        <small id="streak2"></small>
+                    </div>
+
+                </div>
+
+                <div class="game-info">
+                    <span id="questionNumber"></span>
+                    <span id="categoryName"></span>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+
+                <div class="question-card">
+
+                    <div class="timer-container">
+                        <div id="timer" class="timer">15</div>
+
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            Seconds remaining
+                        </span>
+                    </div>
+
+                    <h2 id="questionText"></h2>
+
+                    <div id="answerOptions" class="answer-options"></div>
+
+                    <p id="feedback" class="feedback" aria-live="polite"></p>
+
+                    <button id="nextBtn" class="primary-btn hidden">
+                        Continue
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+            </section>
+
+            <!-- RESULTS -->
+            <section id="resultScreen" class="screen">
+
+                <div class="panel result-panel">
+                    <div class="section-icon winner-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <h1 id="resultTitle">Game Over!</h1>
+                    <p id="resultMessage"></p>
+                    <p id="resultCategory" class="result-category"></p>
+
+                    <div id="finalScores" class="final-scores"></div>
+
+                    <button id="playAgainBtn" class="primary-btn">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        Play Again
+                    </button>
+
+                    <button id="changeCategoryBtn" class="secondary-btn">
+                        <i class="fa-solid fa-layer-group"></i>
+                        Change Categories
+                    </button>
+
+                    <button id="homeBtn" class="secondary-btn">
+                        <i class="fa-solid fa-house"></i>
+                        Main Menu
+                    </button>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <i class="fa-solid fa-gamepad"></i>
+            Trivia Quest | Challenge Your Mind
+        </footer>
+
+    </div>
+</body>
+</html>
